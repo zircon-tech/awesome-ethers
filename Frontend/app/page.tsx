@@ -1,6 +1,5 @@
 'use client';
 import { ethers } from 'ethers';
-import Image from 'next/image'
 import { useState, useEffect } from 'react';
 import abi from './abi';
 
