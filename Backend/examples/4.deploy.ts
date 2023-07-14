@@ -10,7 +10,7 @@ import "dotenv/config";
 const api_key = process.env.PROVIDER_API_KEY;
 
 async function main() {
-  let provider = new ethers.AlchemyProvider(80001, api_key);
+  let provider = ethers.getDefaultProvider(5);
   let wallet = new ethers.Wallet(process.env.PRIVATE_KEY!, provider);
   //  from read file
   const abi = fs.readFileSync(
@@ -24,16 +24,16 @@ async function main() {
   const contractFactory = new ethers.ContractFactory(abi, bin, wallet);
   console.log("Deploying, please wait...");
   const contract = await contractFactory.deploy();
-  console.log(`contract: ${contract}`);
-  const contractDeployed = await contract.waitForDeployment();
-  console.log(`contractDeployed: ${contractDeployed}`);
-  const deploymentReceipt = await contract.deploymentTransaction()?.wait();
-  console.log(`deploymentReceipt: ${deploymentReceipt}`);
-  console.log(`Contract deployed to ${contract.getAddress()}`);
+  console.log(`contract is being deployed`);
+  await contract.waitForDeployment();
+  await contract.deploymentTransaction()?.wait();
+  const contractAddress = await contract.getAddress();
+  console.log(`Contract deployed to ${contractAddress}`);
+  const deployTx = await contract.deploymentTransaction();
   console.log("Here is the transaction:");
-  console.log(contract.deploymentTransaction);
+  console.log(deployTx);
 
-  // let currentProposalCounts = await contract.;
+  //let currentProposalCounts = await contract.proposalCounts();
   // console.log(`Current proposal count is ${currentProposalCounts}`);
 }
 
