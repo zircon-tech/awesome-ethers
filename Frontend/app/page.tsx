@@ -23,12 +23,14 @@ export default function Home() {
     if (typeof (window as any).ethereum !== "undefined") {
       try {
         await (window as any).ethereum.request({ method: "eth_requestAccounts"});
-        setIsConnect(true);
         let provider = new ethers.BrowserProvider((window as any).ethereum);
         const sign = await provider.getSigner();
+
+        const balance = await provider.getBalance(sign.address);
+
+        setIsConnect(true);
         setSigner(sign);
         setAddress(sign.address);
-        const balance = await provider.getBalance(sign.address);
         setBalance(balance);
       } catch (error) {
         console.log(error);
