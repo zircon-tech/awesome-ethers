@@ -18,7 +18,9 @@ async function main() {
   // Get randomMnemonic
   let randomMnemonic = generatedWallet.mnemonic;
   console.log(
-    `From new account ${generatedWallet.address} randomMnemonic = ${randomMnemonic}`
+    `From new account ${
+      generatedWallet.address
+    } randomMnemonic = ${JSON.stringify(randomMnemonic)}`
   );
 
   // Signing a message
