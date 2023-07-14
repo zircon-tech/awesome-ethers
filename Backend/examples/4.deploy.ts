@@ -13,8 +13,14 @@ async function main() {
   let provider = new ethers.AlchemyProvider(80001, api_key);
   let wallet = new ethers.Wallet(process.env.PRIVATE_KEY!, provider);
   //  from read file
-  // const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf8");
-  const bin = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.bin", "utf8");
+  const abi = fs.readFileSync(
+    "./examples/data/compiled/Voting_sol_Voting.abi",
+    "utf8"
+  );
+  const bin = fs.readFileSync(
+    "./examples/data/compiled//Voting_sol_Voting.bin",
+    "utf8"
+  );
   const contractFactory = new ethers.ContractFactory(abi, bin, wallet);
   console.log("Deploying, please wait...");
   const contract = await contractFactory.deploy();
@@ -27,8 +33,8 @@ async function main() {
   console.log("Here is the transaction:");
   console.log(contract.deploymentTransaction);
 
-  let currentProposalCounts = await contract.proposalCounts();
-  console.log(`Current proposal count is ${currentProposalCounts}`);
+  // let currentProposalCounts = await contract.;
+  // console.log(`Current proposal count is ${currentProposalCounts}`);
 }
 
 main()

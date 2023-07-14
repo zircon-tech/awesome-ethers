@@ -9,7 +9,7 @@ async function main() {
   console.log("Example of providers running...");
 
   // Ways for setting up a provider with ethers...
-  // let provider =  ethers.getDefaultProvider(80001); // arguments (chainid)
+  // let provider = ethers.getDefaultProvider(80001); // arguments (chainid)
   // let provider = new ethers.JsonRpcProvider(ProviderURL); // arguments (url)
   let provider = new ethers.AlchemyProvider(80001, api_key); // arguments (chainId, apikey) Mumbai chainId
   //  let provider = new ethers.InfuraProvider(5, api_key); // arguments (chainId, apikey) Goerli chainId

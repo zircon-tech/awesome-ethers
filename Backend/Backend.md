@@ -67,7 +67,7 @@ In example folder you will see several examples. for running any of those:
 In case you want compile the contract and get bin or abi. 
 For this you will need to install solc globally 
    ```sh
-    solcjs --bin --abi  --include-path node_modules/ --base-path ./examples/data -o ./examples/data/compiled ./examples/data/deployContract.sol 
+    solcjs --bin --abi  --include-path node_modules/ --base-path ./examples/data -o ./examples/data/compiled ./examples/data/Voting.sol 
    ```
 or 
    ```sh
