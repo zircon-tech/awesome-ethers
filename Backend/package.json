@@ -7,13 +7,15 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "solcjs --bin --abi  --include-path node_modules/ --base-path ./examples/data -o ./examples/data/compiled ./examples/data/deployContract.sol "
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.3.1",
-    "ethers": "^6.6.3"
+    "ethers": "^6.6.3",
+    "solc": "^0.8.20"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",

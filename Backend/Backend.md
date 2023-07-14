@@ -43,6 +43,7 @@ In order to interact with an EVM blockchain you will need a provider, get a free
    npm install ethers
    npm install -D typescript
    npm install -D ts-node
+   npm install -g solc
    ```
 3. Set your environment variables
    ```.env
@@ -63,5 +64,22 @@ In example folder you will see several examples. for running any of those:
    ts-node examples/example.ts
    ```
 
+In case you want compile the contract and get bin or abi. 
+For this you will need to install solc globally 
+   ```sh
+    solcjs --bin --abi  --include-path node_modules/ --base-path ./examples/data -o ./examples/data/compiled ./examples/data/deployContract.sol 
+   ```
+or 
+   ```sh
+    npm run compile
+   ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- FILE RESOURCES -->
+## File Resources
+ - [1.providers](https://docs.ethers.org/v6/api/providers/#Provider-provider) 
+ - [2.wallet](https://docs.ethers.org/v6/api/wallet/#Wallet)
+ - [3.callContract](https://docs.ethers.org/v6/api/contract/#BaseContract_new)
+ - [4.deployContract](https://docs.ethers.org/v6/api/contract/#ContractFactory)
+ - [5.events](https://docs.ethers.org/v6/api/contract/#BaseContract-queryFilter)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
