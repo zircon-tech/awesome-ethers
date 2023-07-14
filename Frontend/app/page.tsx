@@ -25,10 +25,10 @@ export default function Home() {
         await (window as any).ethereum.request({ method: "eth_requestAccounts"});
         setIsConnect(true);
         let provider = new ethers.BrowserProvider((window as any).ethereum);
-        const signer = await provider.getSigner();
-        setSigner(signer);
-        setAddress(signer.address);
-        const balance = await provider.getBalance(signer.address);
+        const sign = await provider.getSigner();
+        setSigner(sign);
+        setAddress(sign.address);
+        const balance = await provider.getBalance(sign.address);
         setBalance(balance);
       } catch (error) {
         console.log(error);
@@ -65,6 +65,11 @@ export default function Home() {
     }
   }
 
+  async function signMessage() {
+    const messageSigned = await signer.signMessage(message);
+    alert(messageSigned);
+  }
+
   return (
     <div>
       {hasMetamask ? (
@@ -77,7 +82,13 @@ export default function Home() {
         "Please install metamask"
       )}
       <br /><br />
-      {isConnected ? <><button onClick={() => execute()}>Execute update message</button> <br/> <button onClick={() => getmessage()}>Get Message</button></> : ""}
+      {isConnected ? <>
+        <button onClick={() => execute()}>Execute update message</button>
+        <br/>
+        <button onClick={() => getmessage()}>Get Message</button>
+        <br/>
+        <button onClick={() => signMessage()}>Sign Message</button>
+      </> : ""}
       <br /><br />
       { message }
     </div>
