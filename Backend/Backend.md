@@ -44,6 +44,7 @@ In order to interact with an EVM blockchain you will need a provider, get a free
    npm install -D typescript
    npm install -D ts-node
    npm install -g solc
+   npm install --save-dev @typechain/ethers-v6
    ```
 3. Set your environment variables
    ```.env
@@ -73,6 +74,21 @@ or
    ```sh
     npm run compile
    ```
+
+In case you want generate types for the contract. 
+   ```sh
+    typechain --target=ethers-v6 ./examples/data/compiled**/*.abi --out-dir ./examples/data/types
+   ```
+or 
+   ```sh
+    npm run gen-types
+   ```
+
+
+
+
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FILE RESOURCES -->
@@ -80,6 +96,7 @@ or
  - [1.providers](https://docs.ethers.org/v6/api/providers/#Provider-provider) 
  - [2.wallet](https://docs.ethers.org/v6/api/wallet/#Wallet)
  - [3.callContract](https://docs.ethers.org/v6/api/contract/#BaseContract_new)
- - [4.deployContract](https://docs.ethers.org/v6/api/contract/#ContractFactory)
- - [5.events](https://docs.ethers.org/v6/api/contract/#BaseContract-queryFilter)
+ - [4.estimateGasFee](https://docs.ethers.org/v6/api/providers/#FeeData)
+ - [5.deployContract](https://docs.ethers.org/v6/api/contract/#ContractFactory)
+ - [6.events](https://docs.ethers.org/v6/api/contract/#BaseContract-queryFilter)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
